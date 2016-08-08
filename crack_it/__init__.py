@@ -17,9 +17,9 @@
 #======================= END GPL LICENSE BLOCK ========================
 
 '''
-    The addon makes a cracked object based on selected object. Also you can use material preset on objects.
+    The addon makes a cracked object based on selected object. Also you can use material preset for cracked objects.
     
-    WARNING1: Please enable 'Object: Fracture Cell' addon before use the addon!!
+    WARNING1: Please enable 'Object: Cell Fracture' addon before use the addon!!
     WARNING2: Obejects which have many vertices or complex shape could take huge amount of time to make crack.
               So I recommend using simple object, or simplifying object by applying decimate modifier in advance.
 
@@ -60,8 +60,8 @@ bl_info = {
     "version": (0, 1, 0),
     "blender": (2, 77, 0),
     "location": "View3D > Toolshelf > Creat Tab",
-    "description": "Make crack on an object",
-    "warning": "",
+    "description": "Make cracked object",
+    "warning": "Make sure to enable 'Ojbect: Cell Fracture' Addon.",
     #"support": "TESTING",
     "wiki_url": "",
     "tracker_url": "",
