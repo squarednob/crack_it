@@ -1,4 +1,4 @@
-# crack_it
+# Crack It
 A Blender addon to makes a cracked object based on selected object. Also you can use material preset for cracked objects.
 
 ## Links
@@ -16,12 +16,12 @@ A Blender addon to makes a cracked object based on selected object. Also you can
 
 
 ## Basic Usage
-0. Make sure to enable 'Object: Cell Fracture' addon before use the addon.
-1. Select an object (High-poly objects take much time to make cracks).
-2. Find the addon's location in create tab in the toolshelf left. It's usually the same tab of 'Add Primitive'.
-3. Set crack values and click 'Crack It' button. It makes cracked object with some modifiers.
-4. Tweak modifier setting. Decimate modifeir to simplify shape, Smooth modifier to smooth shape.
-5. Select material preset and click 'Apply Material' button.
+1. Make sure to enable 'Object: Cell Fracture' addon before use the addon.
+2. Select an object (High-poly objects take much time to make cracks).
+3. Find the addon's location in create tab in the toolshelf left. It's usually the same tab of 'Add Primitive'.
+4. Set crack values and click 'Crack It' button. It makes cracked object with some modifiers.
+5. Tweak modifier setting. Decimate modifeir to simplify shape, Smooth modifier to smooth shape.
+6. Select material preset and click 'Apply Material' button.
 
 ---
 
@@ -46,4 +46,5 @@ A Blender addon to makes a cracked object based on selected object. Also you can
 
 
 ## Versions
+###v0.1.0
 Download: [v0.1.0.zip](https://github.com/squarednob/crack_it/raw/master/crack_it.zip).
