@@ -25,13 +25,13 @@
 
     Besic Usage:
     1. Select an object.
-    2. Find the addon' location in create tab in the toolshelf left. It's usually the same tab of 'Add Primitive'.
+    2. Find the addon's location in create tab in the toolshelf left. It's usually the same tab of 'Add Primitive'.
     3. Click 'Crack It' button. It makes cracked object with some modifiers.
     4. Tweak modifier setting. Decimate modifeir to simplify shape, Smooth modifier to smooth shape.
     5. Select material preset and click 'Apply Material' button.
 
     Crack Option:
-    'Scale X/Y/Z': Scale of crack's shape. To make long crack like bark of tree, decrease scale of an axis.
+    'Scale X/Y/Z': Scale of crack. To make long crack like bark of tree, decrease scale of an axis.
     'Max Crack': Max number of crack. Notice that if you increase it too much, calculation will take long time.
     'Margin Size': Margin of crack. To make more gap of crack, increase it.
     'Extrude': Extrusion size along with object's normal.
@@ -75,49 +75,49 @@ def register():
     #  In Panel subclass, In bpy.types.Operator subclass, reference them by context.scene.~.
     
     bpy.types.Scene.crackit_fracture_scalex = bpy.props.FloatProperty(
-        name = "Scale X",
+        name = 'Scale X',
         description = "Scale X",
         default = 1.00,
         min = 0.00,
         max = 1.00
     )
     bpy.types.Scene.crackit_fracture_scaley = bpy.props.FloatProperty(
-        name = "Scale Y",
+        name = 'Scale Y',
         description = "Scale Y",
         default = 1.00,
         min = 0.00,
         max = 1.00
     )
     bpy.types.Scene.crackit_fracture_scalez = bpy.props.FloatProperty(
-        name = "Scale Z",
+        name = 'Scale Z',
         description = "Scale Z",
         default = 1.00,
         min = 0.00,
         max = 1.00
     )
     bpy.types.Scene.crackit_fracture_div = bpy.props.IntProperty(
-        name = "Max Crack",
+        name = 'Max Crack',
         description = "Max Crack",
         default = 100,
         min = 0,
         max = 10000
     )
     bpy.types.Scene.crackit_fracture_margin = bpy.props.FloatProperty(
-        name = "Margin Size",
+        name = 'Margin Size',
         description = "Margin Size",
         default = 0.001,
         min = 0.000,
         max = 1.000
     )
     bpy.types.Scene.crackit_extrude_offset = bpy.props.FloatProperty(
-        name = "Extrude",
+        name = 'Extrude',
         description = "Extrude Offset",
         default = 0.10,
         min = 0.00,
         max = 2.00
     )
     bpy.types.Scene.crackit_extrude_random = bpy.props.FloatProperty(
-        name = "Random",
+        name = 'Random',
         description = "Extrude Random",
         default = 0.30,
         min = -1.00,
@@ -127,14 +127,14 @@ def register():
     bpy.types.Scene.crackit_material_addonpath = os.path.dirname(__file__)
     # Selection of material preset.
     bpy.types.Scene.crackit_material_preset = bpy.props.EnumProperty(
-        name = "Preset",
+        name = 'Preset',
         description = "Material Preset",
-        items = [('crackit_excrement1', "Excrement", "Excrement material"),
-                ('crackit_mud1', "Mud", "Mud material"),
-                ('crackit_tree1_moss1', "Tree1_moss", "Tree Material"),
-                ('crackit_tree2_dry1', "Tree2_dry", "Tree Material"),
-                ('crackit_tree3_red1', "Tree3_red", "Tree Material"),
-                ('crackit_rock1', "Rock", "Rock Material")]
+        items = [('crackit_excrement1', 'Excrement', "Excrement material"),
+                ('crackit_mud1', 'Mud', "Mud material"),
+                ('crackit_tree1_moss1', 'Tree1_moss', "Tree Material"),
+                ('crackit_tree2_dry1', 'Tree2_dry', "Tree Material"),
+                ('crackit_tree3_red1', 'Tree3_red', "Tree Material"),
+                ('crackit_rock1', 'Rock', "Rock Material")]
     )
 
 def unregister():

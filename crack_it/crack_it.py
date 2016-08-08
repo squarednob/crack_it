@@ -27,7 +27,7 @@ def _makeJoin(active_name, active_layer):
     # Get object by name.
     #bpy.context.scene.layers[active_layer+1] = True
     bpy.ops.object.select_all(action='DESELECT')
-    bpy.ops.object.select_pattern(pattern=active_name + "_cell*")
+    bpy.ops.object.select_pattern(pattern=active_name + '_cell*')
     fractures = bpy.context.selected_objects
     
     # Execute join.
@@ -36,7 +36,7 @@ def _makeJoin(active_name, active_layer):
     bpy.ops.object.join()
     
     # Change name.
-    bpy.context.scene.objects.active.name = active_name + "_crack"
+    bpy.context.scene.objects.active.name = active_name + '_crack'
     
     # Change origin.
     bpy.ops.object.origin_set(type='GEOMETRY_ORIGIN')
@@ -48,16 +48,16 @@ def _makeJoin(active_name, active_layer):
 def addModifiers():
     bpy.ops.object.modifier_add(type='DECIMATE')
     decimate = bpy.context.object.modifiers[-1]
-    decimate.name = "DECIMATE_crackit"
+    decimate.name = 'DECIMATE_crackit'
     decimate.ratio = 0.4
     
     bpy.ops.object.modifier_add(type='SUBSURF')
     subsurf = bpy.context.object.modifiers[-1]
-    subsurf.name = "SUBSURF_crackit"
+    subsurf.name = 'SUBSURF_crackit'
     
     bpy.ops.object.modifier_add(type='SMOOTH')
     smooth = bpy.context.object.modifiers[-1]
-    smooth.name = "SMOOTH_crackit"
+    smooth.name = 'SMOOTH_crackit'
 
 
 
@@ -109,7 +109,7 @@ def multiExtrude(off=0.1, rotx=0, roty=0, rotz=0, sca=1.0, var1=0.01, var2=0.3, 
     obj.data.update()
 
     if not len(sel):
-        self.report({'INFO'}, 'Select one or more faces...')
+        self.report({'INFO'}, "Select one or more faces...")
     return{'FINISHED'}
 
 def _vloc(r, ran, off, var1):
