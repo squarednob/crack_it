@@ -131,7 +131,9 @@ def register():
         description = "Material Preset",
         items = [('crackit_excrement1', "Excrement", "Excrement material"),
                 ('crackit_mud1', "Mud", "Mud material"),
-                ('crackit_tree1_moss1', "Tree", "Tree Material"),
+                ('crackit_tree1_moss1', "Tree1_moss", "Tree Material"),
+                ('crackit_tree2_dry1', "Tree2_dry", "Tree Material"),
+                ('crackit_tree3_red1', "Tree3_red", "Tree Material"),
                 ('crackit_rock1', "Rock", "Rock Material")]
     )
 
