@@ -28,6 +28,7 @@ A Blender addon to makes a cracked object based on selected object. Also you can
 
 ## Options
 ####Crack Option:
+* 'From Child Verts': Use child's vertices and position for origin of crack.
 * 'Scale X/Y/Z': Scale of crack. To make long crack like bark of tree, decrease scale of an axis.
 * 'Max Crack': Max number of crack. Notice that if you increase it too much, calculation will take long time.
 * 'Margin Size': Margin of crack. To make more gap of crack, increase it.

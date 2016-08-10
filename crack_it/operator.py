@@ -24,7 +24,7 @@ class FractureOperation(bpy.types.Operator):
     def execute(self, context):
         sce = context.scene
 
-        crack_it.makeFracture(division=sce.crackit_fracture_div,
+        crack_it.makeFracture(child_verts=sce.crackit_fracture_childverts, division=sce.crackit_fracture_div,
                             scaleX=sce.crackit_fracture_scalex, scaleY=sce.crackit_fracture_scaley, scaleZ=sce.crackit_fracture_scalez,
                             margin=sce.crackit_fracture_margin)
         crack_it.addModifiers()
@@ -82,6 +82,8 @@ class crackitPanel(bpy.types.Panel):
          if 'object_fracture_cell' not in bpy.context.user_preferences.addons.keys():
              row = box.row()
              row.label("WORNING: Please enable 'Object: Cell Fracture' addon!!")
+         row = box.row()
+         row.prop(sce, 'crackit_fracture_childverts')
          row = box.row()
          row.prop(sce, 'crackit_fracture_scalex') # bpy.types.Scene.crackit_fracture_scalex.
          row = box.row()

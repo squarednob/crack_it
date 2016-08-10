@@ -9,10 +9,16 @@ import addon_utils
 
 # ---------------------Crack-------------------
 # Cell fracture and post-process:
-def makeFracture(crack_source='PARTICLE_OWN', division=100, noise=0.00, scaleX=1.00, scaleY=1.00, scaleZ=1.00, recursion=0, margin=0.001):
+def makeFracture(child_verts=False, division=100, noise=0.00, scaleX=1.00, scaleY=1.00, scaleZ=1.00, recursion=0, margin=0.001):
     # Get active object name and active layer.
     active_name = bpy.context.scene.objects.active.name
     active_layer = bpy.context.scene.active_layer
+    
+    # source method of whether use child verts.
+    if child_verts == True:
+      crack_source = 'VERT_CHILD'
+    else:
+      crack_source = 'PARTICLE_OWN'
     
     bpy.ops.object.add_fracture_cell_objects(source={crack_source}, source_limit=division, source_noise=noise,
         cell_scale=(scaleX, scaleY, scaleZ), recursion=recursion, recursion_source_limit=8, recursion_clamp=250, recursion_chance=0.25, recursion_chance_select='SIZE_MIN',

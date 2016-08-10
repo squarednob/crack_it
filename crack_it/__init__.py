@@ -31,6 +31,7 @@
     5. Select material preset and click 'Apply Material' button.
 
     Crack Option:
+    'From Child Verts': Use child's vertices and position for origin of crack.
     'Scale X/Y/Z': Scale of crack. To make long crack like bark of tree, decrease scale of an axis.
     'Max Crack': Max number of crack. Notice that if you increase it too much, calculation will take long time.
     'Margin Size': Margin of crack. To make more gap of crack, increase it.
@@ -74,6 +75,11 @@ def register():
     # Input on toolshelf before execution --------------------------
     #  In Panel subclass, In bpy.types.Operator subclass, reference them by context.scene.~.
     
+    bpy.types.Scene.crackit_fracture_childverts = bpy.props.BoolProperty(
+        name = 'From Child Verts',
+        description = "Use child object's vertices and position for origin of crack.",
+        default = False
+    )
     bpy.types.Scene.crackit_fracture_scalex = bpy.props.FloatProperty(
         name = 'Scale X',
         description = "Scale X",
