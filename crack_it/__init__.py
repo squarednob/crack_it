@@ -64,8 +64,8 @@ bl_info = {
     "description": "Make cracked object",
     "warning": "Make sure to enable 'Ojbect: Cell Fracture' Addon.",
     #"support": "TESTING",
-    "wiki_url": "",
-    "tracker_url": "",
+    "wiki_url": "http://gappyfacets.com/2016/08/11/blender-crack-addon-basic-tutorial/",
+    "tracker_url": "https://blenderartists.org/forum/showthread.php?404683-Addon-Crack-It-Make-Crack-for-Tree-Poop-Rock-etc",
     "category": "Mesh"
 }
 
