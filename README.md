@@ -18,6 +18,7 @@ A Blender addon to makes a cracked object based on selected object. Also you can
 
 ## Basic Usage
 ![crackit_tutorial_location1](/src/crackit_tutorial1_location1_sign1.png)
+
 1. Make sure to enable 'Object: Cell Fracture' addon before use the addon.
 2. Select an object (High-poly objects take much time to make cracks).
 3. Find the addon's location in create tab in the toolshelf left. It's usually the same tab of 'Add Primitive'.
