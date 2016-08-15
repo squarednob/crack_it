@@ -3,10 +3,10 @@ A Blender addon to makes a cracked object based on selected object. Also you can
 ![crackit_title1](/src/crackit_present_title1_1_credit1.jpg)
 
 ## Links
-* Blender Artist Thread: [[Addon] Crack It - Make Crack for Tree, Poop, Rock, etc](https://blenderartists.org/forum/showthread.php?404683-Addon-Crack-It-Make-Crack-for-Tree-Poop-Rock-etc).
 * Wiki: [Blender: “Crack It” Addon WIki](http://gappyfacets.com/2016/08/11/blender-crack-addon-basic-tutorial/).
-* Basic Turorial video: [Blender: "Crack It" Add-on Basic Tutorial](https://youtu.be/uzWfIk0z4z8).
-* Blog Series for "Crack It" addon: [Archive](http://gappyfacets.com/series/crackit_addon/).
+* Blender Artist thread: [[Addon] Crack It - Make Crack for Tree, Poop, Rock, etc](https://blenderartists.org/forum/showthread.php?404683-Addon-Crack-It-Make-Crack-for-Tree-Poop-Rock-etc).
+* Basic turorial video: [Blender: "Crack It" Add-on Basic Tutorial](https://youtu.be/uzWfIk0z4z8).
+* Blog series for "Crack It" addon: [Archive](http://gappyfacets.com/series/crackit_addon/).
 
 ## Installation
 1. Download the [zip file](https://github.com/squarednob/crack_it/raw/master/crack_it.zip).
