@@ -4,9 +4,9 @@ A Blender addon to makes a cracked object based on selected object. Also you can
 
 ## Links
 * Blender Artist Thread:
-* Turorial: [Blender: “Crack It” Addon Basic Tutorial](http://gappyfacets.com/2016/08/11/blender-crack-addon-basic-tutorial/).
-* Turorial video: [Blender: "Crack It" Add-on Basic Tutorial](https://youtu.be/uzWfIk0z4z8).
-* Example Series: 
+* Wiki: [Blender: “Crack It” Addon WIki](http://gappyfacets.com/2016/08/11/blender-crack-addon-basic-tutorial/).
+* Basic Turorial video: [Blender: "Crack It" Add-on Basic Tutorial](https://youtu.be/uzWfIk0z4z8).
+* Blog Series for "Crack It" addon: [Archive](http://gappyfacets.com/series/crackit_addon/).
 
 ## Installation
 1. Download the [zip file](https://github.com/squarednob/crack_it/raw/master/crack_it.zip).
