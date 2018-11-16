@@ -27,6 +27,7 @@ class FractureOperation(Operator):
     bl_description = ("Make cracks using the cell fracture add-on\n"
                       "Needs only one Selected Mesh Object")
     bl_options = {'REGISTER', 'UNDO'}
+    
     pre_simplify = FloatProperty(
             name="Simplify Base Mesh",
             description="Simplify base mesh before making crack. Lower face size, faster calculation.",
@@ -101,7 +102,7 @@ class FractureOperation(Operator):
             max=5
             )
     fracture_recur_maxdiv = IntProperty(
-            name="Recursion Limit Crack",
+            name="Recursion_Limit Crack",
             description="Recursion Limit Crack",
             default=8,
             min=1,

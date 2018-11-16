@@ -19,7 +19,7 @@
 bl_info = {
     "name": "Cell Fracture Crack It",
     "author": "Nobuyuki Hirakata",
-    "version": (0, 2, 0),
+    "version": (0, 2, 1),
     "blender": (2, 79, 0),
     "location": "View3D > Toolshelf > Create Tab",
     "description": "Displaced Cell Fracture Addon",
@@ -62,7 +62,7 @@ class CrackItProperties(PropertyGroup):
                    ('PARTICLE_CHILD', "Child Particles", "All particle systems of the child objects"),
                    ('PENCIL', "Grease Pencil", "This object's grease pencil"),
                    ],
-            default='PENCIL'
+            default='VERT_OWN'
             )
     fracture_div = IntProperty(
             name="Crack Limit",
@@ -95,11 +95,14 @@ class CrackItProperties(PropertyGroup):
             description="Material Preset",
             items=[
                 ('crackit_organic_mud', "Organic Mud", "Mud material"),
-                ('crackit_mud1', "Mud", "Mud material"),
-                ('crackit_tree1_moss1', "Tree Moss", "Tree Material"),
-                ('crackit_tree2_dry1', "Tree Dry", "Tree Material"),
-                ('crackit_tree3_red1', "Tree Red", "Tree Material"),
-                ('crackit_rock1', "Rock", "Rock Material")
+                ('crackit_mud', "Mud", "Mud material"),
+                ('crackit_tree_moss', "Tree Moss", "Tree Material"),
+                ('crackit_tree_dry', "Tree Dry", "Tree Material"),
+                ('crackit_tree_red', "Tree Red", "Tree Material"),
+                ('crackit_rock', "Rock", "Rock Material"),
+                ('crackit_lava', "Lava", "Lava Material"),
+                ('crackit_wet-paint', "Wet Paint", "Paint Material"),
+                ('crackit_soap', "Soap", "Soap Material"),
                 ]
             )
     material_lib_name = BoolProperty(
