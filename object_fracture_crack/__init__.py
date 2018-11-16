@@ -19,7 +19,7 @@
 bl_info = {
     "name": "Cell Fracture Crack It",
     "author": "Nobuyuki Hirakata",
-    "version": (0, 1, 3),
+    "version": (0, 2, 0),
     "blender": (2, 79, 0),
     "location": "View3D > Toolshelf > Create Tab",
     "description": "Displaced Cell Fracture Addon",
@@ -53,60 +53,38 @@ class CrackItProperties(PropertyGroup):
     # In Panel subclass, In bpy.types.Operator subclass,
     # reference them by context.scene.crackit
 
-    fracture_childverts = BoolProperty(
-            name="From Child Verts",
-            description="Use child object's vertices and position for origin of crack",
-            default=False
-            )
-    fracture_scalex = FloatProperty(
-            name="Scale X",
-            description="Scale X",
-            default=1.00,
-            min=0.00,
-            max=1.00
-            )
-    fracture_scaley = FloatProperty(
-            name="Scale Y",
-            description="Scale Y",
-            default=1.00,
-            min=0.00,
-            max=1.00
-            )
-    fracture_scalez = FloatProperty(
-            name="Scale Z",
-            description="Scale Z",
-            default=1.00,
-            min=0.00,
-            max=1.00
+    fracture_source = EnumProperty(
+            name="From",
+            description="Position for origin of crack",
+            items=[('PARTICLE_OWN', "Own Particles", "All particle systems of the source object"),
+                   ('VERT_OWN', "Own Verts", "Use own vertices"),
+                   ('VERT_CHILD', "Child Verts", "Use child object vertices"),
+                   ('PARTICLE_CHILD', "Child Particles", "All particle systems of the child objects"),
+                   ('PENCIL', "Grease Pencil", "This object's grease pencil"),
+                   ],
+            default='PENCIL'
             )
     fracture_div = IntProperty(
-            name="Max Crack",
+            name="Crack Limit",
             description="Max Crack",
-            default=100,
+            default=4,
             min=1,
-            max=10000
+            max=5000
             )
-    fracture_margin = FloatProperty(
-            name="Margin Size",
-            description="Margin Size",
-            default=0.001,
-            min=0.000,
-            max=1.000
+    fracture_recursion = IntProperty(
+            name="Recursion",
+            description="Recursion",
+            default=0,
+            min=0,
+            max=5
             )
-    extrude_offset = FloatProperty(
-            name="Offset",
-            description="Extrude Offset",
-            default=0.10,
+    pre_simplify = FloatProperty(
+            name="Simplify Base Mesh",
+            description="Simplify base mesh before making crack. Lower face size, faster calculation.",
+            default=0.00,
             min=0.00,
-            max=2.00
-            )
-    extrude_random = FloatProperty(
-            name="Random",
-            description="Extrude Random",
-            default=0.30,
-            min=-1.00,
             max=1.00
-            )
+            )            
     # Path of the addon
     material_addonpath = os.path.dirname(__file__)
     # Selection of material preset

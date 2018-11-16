@@ -7,7 +7,7 @@ from random import (
         gauss,
         seed,
         )
-from math import radians
+from math import radians, pi
 from mathutils import Euler
 
 
@@ -41,36 +41,40 @@ def error_handlers(self, op_name, error, reports="ERROR", func=False, error_type
     print("\n[Cell Fracture Crack It]\n{}: {}\nError: "
           "{}\nReport: {}\n".format(is_func, op_name, error, reports))
 
-
+          
 # -------------------- Crack -------------------
 # Cell fracture and post-process:
-def makeFracture(active_name, active_layer,
-                child_verts=False, division=100, noise=0.00,
-                scaleX=1.00, scaleY=1.00, scaleZ=1.00, recursion=0, margin=0.001):
-    # source method of whether use child verts
-    if child_verts is True:
-        crack_source = 'VERT_CHILD'
+# Setting before crack from grease pencil
+def grease_pencil_setting():
+    obj = bpy.context.object
+    sce = bpy.context.scene
+    sce.tool_settings.grease_pencil_source = 'OBJECT'
+    if sce.grease_pencil and not obj.grease_pencil:
+        obj.grease_pencil = sce.grease_pencil
+    if obj.grease_pencil:
+        obj.grease_pencil.layers[0].parent = obj
     else:
-        crack_source = 'PARTICLE_OWN'
-    
-    # Avoid 0 crack
-    division += 1
-    
-    bpy.ops.object.add_fracture_cell_objects(
-            source={crack_source}, source_limit=division, source_noise=noise,
-            cell_scale=(scaleX, scaleY, scaleZ), recursion=recursion,
-            recursion_source_limit=8, recursion_clamp=250, recursion_chance=0.25,
-            recursion_chance_select='SIZE_MIN', use_smooth_faces=False,
-            use_sharp_edges=False, use_sharp_edges_apply=True, use_data_match=True,
-            use_island_split=True, margin=margin, material_index=0,
-            use_interior_vgroup=False, mass_mode='VOLUME', mass=1, use_recenter=True,
-            use_remove_original=True, use_layer_index=0, use_layer_next=False,
-            group_name="", use_debug_points=False, use_debug_redraw=False, use_debug_bool=False
-            )
+        print("Detecting Grease Pencil was failed. "
+              "Set pencil source to 'OBJECT' from 'SCENE' and set parent.")
 
+def simplifyOriginal(simplify):
+    bpy.ops.object.modifier_add(type='DECIMATE')
+    decimate = bpy.context.object.modifiers[-1]
+    decimate.name = 'DECIMATE_crackit_original'
+    decimate.ratio = 1-simplify
+
+def desimplifyOriginal(original_obj, cracked_obj):
+    bpy.context.scene.objects.active = original_obj
+    if 'DECIMATE_crackit_original' in bpy.context.object.modifiers.keys():
+         bpy.ops.object.modifier_remove(modifier='DECIMATE_crackit_original')
+    bpy.context.scene.objects.active = cracked_obj
 
 # Join fractures into an object
-def makeJoin(self, active_name, active_layer):
+def makeJoin(self, original_loc):
+    # Get active object name and active layer
+    active_name = bpy.context.scene.objects.active.name
+    active_layer = bpy.context.scene.active_layer
+
     # Get object by name
     bpy.ops.object.select_all(action='DESELECT')
     bpy.ops.object.select_pattern(pattern=active_name + '_cell*')
@@ -89,22 +93,28 @@ def makeJoin(self, active_name, active_layer):
             )
         # Duplicate ojbect
         bpy.ops.object.select_pattern(pattern=active_name)
-        bpy.ops.object.duplicate_move(TRANSFORM_OT_translate={"value":(2, 0, 0)})
-        
+        bpy.ops.object.duplicate_move(TRANSFORM_OT_translate={"value":(2, 0, 0)})      
 
     # Change name
     bpy.context.scene.objects.active.name = active_name + '_crack'
-
     # Change origin
     bpy.ops.object.origin_set(type='GEOMETRY_ORIGIN')
+    # Change location to avoid overlap of two objects
+    new_location = bpy.context.object.location.copy()
+    new_location[0] += original_loc
+    bpy.context.scene.objects.active.location = new_location
+    
+    return bpy.context.scene.objects.active
 
 
 # Add modifier and setting
-def addModifiers():
+def addModifiers(decimate_val=0.4, smooth_val=0.5):
     bpy.ops.object.modifier_add(type='DECIMATE')
     decimate = bpy.context.object.modifiers[-1]
     decimate.name = 'DECIMATE_crackit'
-    decimate.ratio = 0.4
+    #decimate.decimate_type = 'DISSOLVE'
+    decimate.ratio = decimate_val
+    #decimate.angle_limit = decimate_val*pi
 
     bpy.ops.object.modifier_add(type='SUBSURF')
     subsurf = bpy.context.object.modifiers[-1]
@@ -113,12 +123,13 @@ def addModifiers():
     bpy.ops.object.modifier_add(type='SMOOTH')
     smooth = bpy.context.object.modifiers[-1]
     smooth.name = 'SMOOTH_crackit'
-
+    smooth.factor = smooth_val
+   
 
 # -------------- multi extrude --------------------
 # var1=random offset, var2=random rotation, var3=random scale
-def multiExtrude(off=0.1, rotx=0, roty=0, rotz=0, sca=1.0,
-                var1=0.01, var2=0.3, var3=0.3, num=1, ran=0):
+def multiExtrude(off=0.1, rotx=0, roty=0, rotz=0, sca=0.0,
+                var1=0.01, var2=0.01, var3=0.01, num=1, ran=0):
 
     obj = bpy.context.object
     bpy.context.tool_settings.mesh_select_mode = [False, False, True]
