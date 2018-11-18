@@ -316,6 +316,7 @@ class MaterialOperation(Operator):
 
         try:
             crack_it.appendMaterial(
+                    crackit = crackit,
                     addon_path=crackit.material_addonpath,
                     material_name=mat_name,
                     mat_ui_names=mat_ui_name

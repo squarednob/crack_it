@@ -220,7 +220,7 @@ def _volver(obj, copia, om, msm, msv):
 
 
 # -------------- Material preset --------------------------
-def appendMaterial(addon_path, material_name, mat_ui_names="Nameless Material"):
+def appendMaterial(crackit, addon_path, material_name, mat_ui_names="Nameless Material"):
     # Load material from the addon directory
     file_path = _makeFilePath(addon_path=addon_path)
     bpy.ops.wm.append(filename=material_name, directory=file_path)
@@ -231,7 +231,7 @@ def appendMaterial(addon_path, material_name, mat_ui_names="Nameless Material"):
     if last_material:
         mat = bpy.data.materials[last_material]
         # skip renaming if the prop is True
-        if not bpy.context.scene.crackit.material_lib_name:
+        if not crackit.material_lib_name:
             mat.name = mat_ui_names
 
         # Apply Only one material in the material slot

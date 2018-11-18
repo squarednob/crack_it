@@ -19,7 +19,7 @@
 bl_info = {
     "name": "Cell Fracture Crack It",
     "author": "Nobuyuki Hirakata",
-    "version": (0, 2, 1),
+    "version": (0, 2, 2),
     "blender": (2, 79, 0),
     "location": "View3D > Toolshelf > Create Tab",
     "description": "Displaced Cell Fracture Addon",
